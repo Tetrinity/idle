@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
+  "name": "idle",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "description": "An idle-clicker game built to play around with AngularJS",
+  "repository": "https://github.com/Tetrinity/idle",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.3.1",

@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('idle', ['Routing'])
+var app = angular.module('idle', ['idle.routing', 'idle.controller'])

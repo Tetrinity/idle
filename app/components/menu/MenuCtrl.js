@@ -22,10 +22,17 @@
  * THE SOFTWARE.
  */
 
-angular.module('idle.controller', []).
-controller('MenuCtrl', ['$scope',
-    function($scope){
+angular.module('idle.controller', [])
+
+.controller('MenuCtrl', ['$scope', '$window',
+    function($scope, $window){
         $scope.message = "This is the menu."
         console.log("initialised MenuCtrl")
+        
+        
+        
+        $scope.newGame = function(){
+            $window.location.href = "index.html#/game"
+        }
     }
 ])

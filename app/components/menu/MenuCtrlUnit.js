@@ -21,20 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
-angular.module('idle.routing', ['ngRoute'])
-.config(['$routeProvider',
-    function($routeProvider){
-        $routeProvider.when('/menu', {
-            templateUrl: 'components/menu/menu.html',
-            controller: 'MenuCtrl'
+describe("MenuCtrl", function(){
+    
+    var controller
+    
+    beforeEach(module('idle.controller'))
+    beforeEach(inject(function(_$controller_){
+        controller = _$controller_('MenuCtrl', { $scope: $scope })
+    }))
+    
+    describe("newGame", function(){
+        it("should clear save data", function(){
+            
         })
-        .when('/game', {
-            templateUrl: 'components/game/game.html',
-            controller: "GameCtrl"
+        
+        it("should direct the user to the game view", function(){
+            
         })
-        .otherwise({
-            redirectTo: '/menu'
-        })
-    }
-])
+    })
+})

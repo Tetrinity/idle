@@ -22,19 +22,12 @@
  * THE SOFTWARE.
  */
 
-angular.module('idle.routing', ['ngRoute'])
-.config(['$routeProvider',
-    function($routeProvider){
-        $routeProvider.when('/menu', {
-            templateUrl: 'components/menu/menu.html',
-            controller: 'MenuCtrl'
-        })
-        .when('/game', {
-            templateUrl: 'components/game/game.html',
-            controller: "GameCtrl"
-        })
-        .otherwise({
-            redirectTo: '/menu'
-        })
+angular.module('idle.controller')
+
+.controller('GameCtrl', ['$scope',
+    function($scope){
+        console.log("initialised GameCtrl")
+        
+        
     }
 ])

@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-angular.module('idle.routing', ['ngRoute'])
+angular.module('idle.routing')
 .config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider){
         $routeProvider.when('/menu', {

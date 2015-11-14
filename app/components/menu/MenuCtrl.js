@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-angular.module('idle.controller', [])
+angular.module('idle.controller')
 
 .controller('MenuCtrl', ['$scope', '$location',
     function($scope, $location){

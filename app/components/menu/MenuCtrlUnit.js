@@ -24,10 +24,16 @@
 describe("MenuCtrl", function(){
     
     var controller
+    var $scope, $location
+    
     
     beforeEach(module('idle.controller'))
-    beforeEach(inject(function(_$controller_){
-        controller = _$controller_('MenuCtrl', { $scope: $scope })
+    
+    beforeEach(inject(function(_$controller_, _$location_){
+        $scope = {}
+        $location = _$location_
+        
+        controller = _$controller_('MenuCtrl', { $scope: $scope, $location: $location })
     }))
     
     describe("newGame", function(){
@@ -36,7 +42,11 @@ describe("MenuCtrl", function(){
         })
         
         it("should direct the user to the game view", function(){
+            var gameUrl = '/game'
+            expect($location.path()).not.toEqual(gameUrl)
             
+            $scope.newGame()
+            expect($location.path()).toEqual(gameUrl)
         })
     })
 })

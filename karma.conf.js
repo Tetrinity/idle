@@ -7,6 +7,7 @@ module.exports = function(config){
         { pattern: 'bower_components/angular/angular.js', watched: false },
         { pattern: 'bower_components/angular-route/angular-route.js', watched: false },
         { pattern: 'bower_components/angular-mocks/angular-mocks.js', watched: false },
+        'app.js',
         'components/**/*.js'
     ],
 

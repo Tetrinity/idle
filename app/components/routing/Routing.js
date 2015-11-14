@@ -23,8 +23,8 @@
  */
 
 angular.module('idle.routing', ['ngRoute'])
-.config(['$routeProvider',
-    function($routeProvider){
+.config(['$routeProvider', '$locationProvider',
+    function($routeProvider, $locationProvider){
         $routeProvider.when('/menu', {
             templateUrl: 'components/menu/menu.html',
             controller: 'MenuCtrl'
@@ -36,5 +36,7 @@ angular.module('idle.routing', ['ngRoute'])
         .otherwise({
             redirectTo: '/menu'
         })
+        
+        $locationProvider.html5Mode(true)
     }
 ])

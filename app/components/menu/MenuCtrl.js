@@ -24,15 +24,15 @@
 
 angular.module('idle.controller', [])
 
-.controller('MenuCtrl', ['$scope', '$window',
-    function($scope, $window){
+.controller('MenuCtrl', ['$scope', '$location',
+    function($scope, $location){
         $scope.message = "This is the menu."
         console.log("initialised MenuCtrl")
         
         
         
         $scope.newGame = function(){
-            $window.location.href = "index.html#/game"
+            $location.path('/game')
         }
     }
 ])

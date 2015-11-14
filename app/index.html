@@ -4,13 +4,20 @@
         <title>idle</title>
         
         <base href="/components">
+        
+        <link rel="stylesheet" href="css/app.css">
     </head>
     
     <body ng-app="idle">
+        
+        <div class="header">
+            Header
+        </div>
+        
         <div ng-view></div>
         
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
         <script src="app.js"></script>
         <script src="components/menu/MenuCtrl.js"></script>
         <script src="components/game/GameCtrl.js"></script>

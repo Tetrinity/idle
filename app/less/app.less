@@ -23,10 +23,25 @@ THE SOFTWARE.
 */
 
 @outsideBackgroundColour: #DDEEFF;
+@outsideMargin: 5px;
 
 .header {
     background-color: @outsideBackgroundColour;
     min-height: 50px;
     padding: 5px;
-    margin-bottom: 5px;
+    margin-bottom: @outsideMargin;
+}
+
+.body {
+    border: 2px solid @outsideBackgroundColour;
+    border-radius: 15px;
+    padding: 10px;
+    min-height: 200px;
+}
+
+.footer {
+    background-color: @outsideBackgroundColour;
+    min-height: 40px;
+    padding: 5px;
+    margin-top: @outsideMargin;
 }

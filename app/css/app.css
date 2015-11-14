@@ -27,4 +27,16 @@ THE SOFTWARE.
   padding: 5px;
   margin-bottom: 5px;
 }
+.body {
+  border: 2px solid #DDEEFF;
+  border-radius: 15px;
+  padding: 10px;
+  min-height: 200px;
+}
+.footer {
+  background-color: #DDEEFF;
+  min-height: 40px;
+  padding: 5px;
+  margin-top: 5px;
+}
 /*# sourceMappingURL=app.css.map */

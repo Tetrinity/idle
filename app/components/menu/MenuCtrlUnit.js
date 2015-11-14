@@ -26,7 +26,6 @@ describe("MenuCtrl", function(){
     var controller
     var $scope, $location
     
-    
     beforeEach(module('idle.controller'))
     
     beforeEach(inject(function(_$controller_, _$location_){

@@ -24,15 +24,14 @@
 
 angular.module('idle.controller')
 
-.controller('MenuCtrl', ['$scope', '$location',
-    function($scope, $location){
+.controller('MenuCtrl', ['$scope', '$location', 'SaveDataService',
+    function($scope, $location, saveDataService){
         $scope.message = "This is the menu."
-        console.log("initialised MenuCtrl")
-        
-        
         
         $scope.newGame = function(){
-            $location.path('/game')
+            if (saveDataService.newGame()){
+                $location.path('/game')
+            }
         }
     }
 ])

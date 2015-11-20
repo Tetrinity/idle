@@ -21,31 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-describe("MenuCtrl", function(){
+
+angular.module('idle.service')
+
+.factory('SaveDataService', function(){
+    var service = {
+        saveDataExists: false,
+        linesOfCode: bigInt(0)
+    }
     
-    var controller
-    var $scope, $location, saveDataService
-    
-    beforeEach(module('idle.controller'))
-    
-    beforeEach(inject(function(_$controller_, _$location_){
-        $scope = {}
-        $location = _$location_
+    service.newGame = function(){
+        var CONFIRM_MESSAGE = "Overwrite save?"
         
-        saveDataService = {
-            newGame: jasmine.createSpy("newGame").and.returnValue(true)
+        if (!service.saveDataExists || confirm(CONFIRM_MESSAGE)){
+            service.initSave()
+            return true
         }
         
-        controller = _$controller_('MenuCtrl', { $scope: $scope, $location: $location, SaveDataService: saveDataService })
-    }))
+        return false
+    }
     
-    describe("newGame", function(){
-        it("should direct the user to the game view", function(){
-            var gameUrl = '/game'
-            expect($location.path()).not.toEqual(gameUrl)
-            
-            $scope.newGame()
-            expect($location.path()).toEqual(gameUrl)
-        })
-    })
+    service.initSave = function(){
+        service.saveDataExists = true
+        service.linesOfCode = bigInt(0)
+    }
+    
+    return service
 })

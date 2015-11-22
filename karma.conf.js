@@ -5,6 +5,7 @@ module.exports = function(config){
 
     files : [
         { pattern: 'bower_components/angular/angular.js', watched: false },
+        { pattern: 'bower_components/angular-cookies/angular-cookies.js', watched: false },
         { pattern: 'bower_components/angular-route/angular-route.js', watched: false },
         { pattern: 'bower_components/angular-mocks/angular-mocks.js', watched: false },
         { pattern: 'bower_components/big-integer/BigInteger.js', watched: false },

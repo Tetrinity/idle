@@ -24,53 +24,62 @@
 
 describe("SaveDataService", function(){
     
-    var saveDataService
+    var service
+    var $cookies
     
     beforeEach(module('idle.service'))
     
-    beforeEach(inject(function(_SaveDataService_){
-        saveDataService = _SaveDataService_
+    beforeEach(inject(function(_SaveDataService_, _$cookies_){
+        service = _SaveDataService_
+        $cookies = _$cookies_
     }))
     
     describe("newGame", function(){
         beforeEach(function(){
-            spyOn(saveDataService, "initSave")
+            spyOn(service, "initSave")
         })
         
         it("should set up the save file if it does not already exist", function(){
             spyOn(window, "confirm").and.returnValue(true)
-            saveDataService.newGame()
+            
+            service.newGame()
             
             expect(window.confirm).not.toHaveBeenCalled()
-            expect(saveDataService.initSave).toHaveBeenCalled() 
+            expect(service.initSave).toHaveBeenCalled()
         })
         
         it("should prompt the user to confirm overwriting the save if it already exists", function(){
+            $cookies.saveGame = {}
             spyOn(window, "confirm").and.returnValue(true)
-            saveDataService.saveDataExists = true
             
-            saveDataService.newGame()
+            service.newGame()
             
             expect(window.confirm).toHaveBeenCalled()
-            expect(saveDataService.initSave).toHaveBeenCalled()            
+            expect(service.initSave).toHaveBeenCalled()
         })
         
         it("should not initialise the save if a save file already exists and the user declines overwriting it", function(){
+            $cookies.saveGame = {}
             spyOn(window, "confirm").and.returnValue(false)
-            saveDataService.saveDataExists = true
             
-            saveDataService.newGame()
+            service.newGame()
             
             expect(window.confirm).toHaveBeenCalled()
-            expect(saveDataService.initSave).not.toHaveBeenCalled()  
+            expect(service.initSave).not.toHaveBeenCalled()
         })
     })
     
     describe("initSave", function(){
-        it("should set the amount of code written by the player to zero", function(){
-            saveDataService.initSave()
+        it("should set the amount of money the player has to the base amount", function(){
+            service.initSave()
             
-            expect(saveDataService.linesOfCode).toEqual(bigInt(0))
+            expect(service.money).toEqual(bigInt(10))
+        })
+        
+        it("should set the amount of code written by the player to zero", function(){
+            service.initSave()
+            
+            expect(service.linesOfCode).toEqual(bigInt(0))
         })
         
         it("should disable all projects except the first", function(){
@@ -82,5 +91,29 @@ describe("SaveDataService", function(){
         })
     })
     
+    describe("saveGame", function(){
+        it("should save a cookie with the current save state", function(){
+            service.saveGame()
+            
+            expect($cookies.saveGame).toBeDefined()
+        })
+    })
     
+    describe("loadGame", function(){
+        beforeEach(function(){
+            spyOn(service, "initSave")
+        })
+        
+        it("should restore the save state from a cookie", function(){
+            $cookies.saveGame = {}
+            
+            service.loadGame()
+            expect(service.initSave).not.toHaveBeenCalled()
+        })
+        
+        it("should redirect to initSave if no cookie is available", function(){
+            service.loadGame()
+            expect(service.initSave).toHaveBeenCalled()
+        })
+    })
 })

@@ -24,27 +24,49 @@
 
 angular.module('idle.service')
 
-.factory('SaveDataService', function(){
-    var service = {
-        saveDataExists: false,
-        linesOfCode: bigInt(0)
-    }
-    
-    service.newGame = function(){
-        var CONFIRM_MESSAGE = "Overwrite save?"
-        
-        if (!service.saveDataExists || confirm(CONFIRM_MESSAGE)){
-            service.initSave()
-            return true
+.factory('SaveDataService', ['$cookies',
+    function($cookies){
+        var baseSave = {
+            money: bigInt(10),
+            linesOfCode: bigInt(0)
+        }
+
+        var service = angular.copy(baseSave)
+
+        service.newGame = function(){
+            var CONFIRM_MESSAGE = "Overwrite save?"
+            
+            var savedState = $cookies.saveGame
+            if (!savedState || confirm(CONFIRM_MESSAGE)){
+                service.initSave()
+                return true
+            }
+
+            return false
+        }
+
+        service.initSave = function(){
+            for (var field in baseSave){
+                if (!baseSave.hasOwnProperty(field)){ continue }
+                
+                service[field] = baseSave[field]
+            }
+        }
+
+        service.saveGame = function(){
+            $cookies.saveGame = service
         }
         
-        return false
+        service.loadGame = function(){
+            var savedState = $cookies.saveGame
+            
+            if (savedState){
+                service = savedState
+            } else {
+                service.initSave()
+            }
+        }
+
+        return service
     }
-    
-    service.initSave = function(){
-        service.saveDataExists = true
-        service.linesOfCode = bigInt(0)
-    }
-    
-    return service
-})
+])

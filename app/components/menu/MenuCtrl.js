@@ -33,5 +33,10 @@ angular.module('idle.controller')
                 $location.path('/game')
             }
         }
+        
+        $scope.loadGame = function(){
+            saveDataService.loadGame()
+            $location.path('/game')
+        }
     }
 ])

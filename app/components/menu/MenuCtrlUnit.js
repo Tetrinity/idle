@@ -27,25 +27,56 @@ describe("MenuCtrl", function(){
     var $scope, $location, saveDataService
     
     beforeEach(module('idle.controller'))
+    beforeEach(module('idle.service'))
     
-    beforeEach(inject(function(_$controller_, _$location_){
+    beforeEach(inject(function(_$controller_, _$location_, _SaveDataService_){
         $scope = {}
         $location = _$location_
-        
-        saveDataService = {
-            newGame: jasmine.createSpy("newGame").and.returnValue(true)
-        }
+        saveDataService = _SaveDataService_
         
         controller = _$controller_('MenuCtrl', { $scope: $scope, $location: $location, SaveDataService: saveDataService })
     }))
     
     describe("newGame", function(){
         it("should direct the user to the game view", function(){
+            spyOn(saveDataService, 'newGame').and.returnValue(true)
+            
+            var menuUrl = ''
+            expect($location.path()).toEqual(menuUrl)
+            
+            $scope.newGame()
+            
+            var gameUrl = '/game'
+            expect($location.path()).toEqual(gameUrl)
+        })
+        
+        it("should do nothing if the game should not be started", function(){
+            spyOn(saveDataService, 'newGame').and.returnValue(false)
+            
+            var menuUrl = ''
+            expect($location.path()).toEqual(menuUrl)
+            
+            $scope.newGame()
+            expect($location.path()).toEqual(menuUrl)
+        })
+    })
+    
+    describe("loadGame", function(){
+        beforeEach(function(){
+            spyOn(saveDataService, 'loadGame')
+        })
+        
+        it("should direct the user to the game view", function(){
             var gameUrl = '/game'
             expect($location.path()).not.toEqual(gameUrl)
             
-            $scope.newGame()
+            $scope.loadGame()
             expect($location.path()).toEqual(gameUrl)
+        })
+        
+        it("should restore the saved game state", function(){
+            $scope.loadGame()
+            expect(saveDataService.loadGame).toHaveBeenCalled()
         })
     })
 })

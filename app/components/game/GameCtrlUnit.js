@@ -22,4 +22,29 @@
  * THE SOFTWARE.
  */
 
-
+describe("GameCtrl", function(){
+    var controller
+    var $scope, saveDataService
+    
+    beforeEach(module('idle.controller'))
+    beforeEach(module('idle.service'))
+    
+    beforeEach(inject(function(_$controller_, _SaveDataService_){
+        $scope = {}
+        saveDataService = _SaveDataService_
+        
+        controller = _$controller_('GameCtrl', { $scope: $scope, SaveDataService: saveDataService })
+    }))
+    
+    describe("saveGame", function(){
+        beforeEach(function(){
+            spyOn(saveDataService, "saveGame")
+        })
+        
+        it("should call the saveGame function on the saveDataService", function(){
+            $scope.saveGame()
+            
+            expect(saveDataService.saveGame).toHaveBeenCalled()
+        })
+    })
+})

@@ -24,10 +24,12 @@
 
 angular.module('idle.controller')
 
-.controller('GameCtrl', ['$scope',
-    function($scope){
-        console.log("initialised GameCtrl")
+.controller('GameCtrl', ['$scope', 'SaveDataService',
+    function($scope, saveDataService){
+        $scope.data = saveDataService
         
-        
+        $scope.saveGame = function(){
+            saveDataService.saveGame()
+        }
     }
 ])

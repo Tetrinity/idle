@@ -24,11 +24,12 @@
 
 angular.module('idle.service')
 
-.factory('SaveDataService', ['$cookies',
-    function($cookies){
+.factory('SaveDataService', ['$cookies', 'ProjectService',
+    function($cookies, projectService){
         var baseSave = {
             money: bigInt(10),
-            linesOfCode: bigInt(0)
+            linesOfCode: bigInt(0),
+            projects: projectService.projects
         }
 
         var service = angular.copy(baseSave)
@@ -51,6 +52,11 @@ angular.module('idle.service')
                 
                 service[field] = baseSave[field]
             }
+            
+            for (var i = 1; i < service.projects.length; i++){
+                service.projects[i].unlocked = false
+            }
+            service.projects[0].unlocked = true
         }
 
         service.saveGame = function(){

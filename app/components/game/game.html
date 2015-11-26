@@ -1,4 +1,4 @@
 Game page
 <button data-ng-click="saveGame()">Save Game</button><br>
-<project project-name="Hello World"></project><br>
-<project project-name="FizzBuzz"></project>
+
+<project data-ng-repeat="project in projects" project-name="{{project.name}}"></project>

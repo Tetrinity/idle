@@ -22,15 +22,38 @@
  * THE SOFTWARE.
  */
 
-angular.module('idle.controller')
+angular.module('idle.service')
 
-.controller('GameCtrl', ['$scope', 'SaveDataService', 'ProjectService',
-    function($scope, saveDataService, projectService){
-        $scope.data = saveDataService
-        $scope.projects = projectService.projects
+.factory('ProjectService', [
+    function(){
+        var service = {}
+        service.projects = []
         
-        $scope.saveGame = function(){
-            saveDataService.saveGame()
+        /*
+         *  Project structure:
+         *  name: the name of the project
+         *  baseLoc: the number of lines of code required to write this program (without upgrades)
+         *  baseProfit: the amount of money made by selling the rights to this program at 100% completion
+         *  unlocked: whether this project is available for development
+         */
+        
+        service.registerProject = function(name, baseLoc, baseProfit){
+            service.projects.push({
+                name: name,
+                baseLoc: baseLoc,
+                baseProfit: baseProfit,
+                unlocked: false
+            })
         }
+        
+        var register = service.registerProject
+        
+        register("Hello World", bigInt(5), bigInt(2))
+        register("FizzBuzz", bigInt(15), bigInt(6))
+        register("Recursion Lab Exercise", bigInt(50), bigInt(12))
+        register("GeoCities Website", bigInt(200), bigInt(100))
+        
+        
+        return service
     }
 ])

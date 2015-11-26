@@ -29,6 +29,20 @@ describe("SaveDataService", function(){
     
     beforeEach(module('idle.service'))
     
+    beforeEach(function(){
+        var mockProjectService = {
+            projects: []
+        }
+        for (var i = 0; i < 5; i++){
+            mockProjectService.projects.push({unlocked: false})
+            mockProjectService.projects.push({unlocked: true})
+        }
+
+        module('idle.service', function($provide){
+            $provide.value('ProjectService', mockProjectService)
+        })
+    })
+    
     beforeEach(inject(function(_SaveDataService_, _$cookies_){
         service = _SaveDataService_
         $cookies = _$cookies_
@@ -83,7 +97,12 @@ describe("SaveDataService", function(){
         })
         
         it("should disable all projects except the first", function(){
+            service.initSave()
             
+            expect(service.projects[0].unlocked).toEqual(true)
+            for (var i = 1; i < service.projects.length; i++){
+                expect(service.projects[i].unlocked).toEqual(false)
+            }
         })
         
         it("should reset all upgrades", function(){

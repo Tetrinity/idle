@@ -22,15 +22,30 @@
  * THE SOFTWARE.
  */
 
-angular.module('idle.controller')
-
-.controller('GameCtrl', ['$scope', 'SaveDataService', 'ProjectService',
-    function($scope, saveDataService, projectService){
-        $scope.data = saveDataService
-        $scope.projects = projectService.projects
-        
-        $scope.saveGame = function(){
-            saveDataService.saveGame()
-        }
-    }
-])
+describe("ProjectService", function(){
+    var service
+    
+    beforeEach(module('idle.service'))
+    
+    beforeEach(inject(function(_ProjectService_){
+        service = _ProjectService_
+        service.projects = []
+    }))
+    
+    describe("registerProject", function(){
+        it("should push the project into the service object", function(){
+            var name = "Test Project"
+            var baseLoc = bigInt(10)
+            var baseProfit = bigInt(500)
+            
+            service.registerProject(name, baseLoc, baseProfit)
+            
+            expect(service.projects.length).toEqual(1)
+            
+            expect(service.projects[0].name).toEqual(name)
+            expect(service.projects[0].baseLoc).toEqual(baseLoc)
+            expect(service.projects[0].baseProfit).toEqual(baseProfit)
+            expect(service.projects[0].unlocked).toEqual(false)
+        })
+    })
+})

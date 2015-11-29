@@ -42,10 +42,17 @@ describe("NumberService", function(){
     })
     
     describe("getEnglishName", function(){
+        beforeEach(function(){
+            spyOn(service, "formatNumber").and.callFake(function(x){ return x })
+        })
+        
         it("should leave numbers less than 1 billion as they are", function(){
             expect(service.getEnglishName(bigInt("0"))).toEqual(0)
             expect(service.getEnglishName(bigInt("1234"))).toEqual(1234)
             expect(service.getEnglishName(bigInt("999999999"))).toEqual(999999999)
+            
+            expect(service.formatNumber).toHaveBeenCalled()
+            expect(service.formatNumber.calls.count()).toEqual(3)
         })
         
         it("should convert numbers larger than 1 billion to English words", function(){
@@ -54,6 +61,8 @@ describe("NumberService", function(){
             expect(service.getEnglishName(bigInt("123456789000"))).toEqual("123.457 billion")
             expect(service.getEnglishName(bigInt("123450001234"))).toEqual("123.45 billion")
             expect(service.getEnglishName(bigInt("13450001234"))).toEqual("13.45 billion")
+            
+            expect(service.formatNumber).not.toHaveBeenCalled()
         })
     })
     
@@ -75,6 +84,16 @@ describe("NumberService", function(){
             expect(service.bigIntFloorLog(bigInt("123456789"))).toEqual(8)
             // 9,999,999,999,999,999,999,999,999,999,999,999,999,999,999 ie. ~9.999 tredecillion 
             expect(service.bigIntFloorLog(bigInt("9999999999999999999999999999999999999999999"))).toEqual(42)
+        })
+    })
+    
+    describe("formatNumber", function(){
+        it("should insert commas between every 3 non-fractional digits of the passed in string", function(){
+            expect(service.formatNumber(bigInt("1000000"))).toEqual("1,000,000")
+            expect(service.formatNumber("123456")).toEqual("123,456")
+            expect(service.formatNumber("12345")).toEqual("12,345")
+            expect(service.formatNumber("12345.67")).toEqual("12,345.67")
+            expect(service.formatNumber("1123456.789")).toEqual("1,123,456.789")
         })
     })
 })

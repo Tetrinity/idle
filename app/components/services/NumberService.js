@@ -57,7 +57,7 @@ angular.module('idle.service')
         
         
         service.getEnglishName = function(num){
-            if (num < ONE_BILLION){ return num.value }
+            if (num < ONE_BILLION){ return service.formatNumber(num.value) }
             
             // suffix algorithm:
             // calculate radix (10^n) and use as index into name table
@@ -81,6 +81,7 @@ angular.module('idle.service')
                 prefix = prefix.substring(0, prefix.length-1)
             }
             
+            // TODO: user setting for decimal separator
             if (prefix.length > digitsBeforePoint){
                 prefix = prefix.substring(0, digitsBeforePoint) + "." + prefix.substring(digitsBeforePoint)
             }
@@ -91,6 +92,13 @@ angular.module('idle.service')
         service.bigIntFloorLog = function(num){
             var numLength = num.toString().length
             return numLength-1
+        }
+        
+        service.formatNumber = function(num){
+            // lovingly stolen from http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+            var parts = num.toString().split(".");
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return parts.join(".");
         }
         
         

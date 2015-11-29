@@ -53,6 +53,15 @@ angular.module('idle.service')
         register("Recursion Lab Exercise", bigInt(50), bigInt(12))
         register("GeoCities Website", bigInt(200), bigInt(100))
         
+        /*
+         * project ideas:
+         * Terrible Idle Game
+         * Yet Another Accounting Application
+         * Spork Bomb
+         * Anti-Virus, followed by Virus
+         * Everworld Ultima Evescape Online
+         * Skynet
+         */
         
         return service
     }

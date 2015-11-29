@@ -22,8 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-@outsideBackgroundColour: #DDEEFF;
-@panelPadding: 0.5rem;
+@import "elements.less";
+@import "variables.less";
 
 .statPanel {
     border-bottom: 2px solid @outsideBackgroundColour;
@@ -39,4 +39,23 @@ THE SOFTWARE.
 
 .projectPanel {
     padding: @panelPadding;
+    
+    .project {
+        width: 40%;
+        margin-bottom: 0.5rem;
+        border: 2px solid @outsideBackgroundColour;
+        border-radius: 5px;
+        
+        .projectName {
+            width: auto;
+            display: inline-block;
+            @pad: 0.2rem;
+            padding: @pad @pad*2 @pad @pad;
+            border-bottom: 2px transparent;
+            border-right: 2px transparent;
+            border-bottom-right-radius: 10px;
+            .gradient(@projectNameColour, @projectNameColour, lighten(@projectNameColour, 30%));
+            color: #FFFFFF;
+        }
+    }
 }

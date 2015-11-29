@@ -21,6 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
+html {
+  font-family: "Verdana", sans-serif;
+}
 .header {
   background-color: #DDEEFF;
   min-height: 50px;
@@ -30,7 +33,7 @@ THE SOFTWARE.
 .body {
   border: 2px solid #DDEEFF;
   border-radius: 15px;
-  padding: 10px;
+  padding: 0.5rem 0;
   min-height: 200px;
 }
 .footer {

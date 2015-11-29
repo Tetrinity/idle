@@ -23,29 +23,20 @@ THE SOFTWARE.
 */
 
 @outsideBackgroundColour: #DDEEFF;
-@outsideMargin: 5px;
+@panelPadding: 0.5rem;
 
-html {
-    font-family: "Verdana", sans-serif;
+.statPanel {
+    border-bottom: 2px solid @outsideBackgroundColour;
+    padding: 0 @panelPadding @panelPadding @panelPadding;
+    margin-bottom: 5px;
+    
+    span {
+        display: block;
+        line-height: 150%;
+        font-weight: bold;
+    }
 }
 
-.header {
-    background-color: @outsideBackgroundColour;
-    min-height: 50px;
-    padding: 5px;
-    margin-bottom: @outsideMargin;
-}
-
-.body {
-    border: 2px solid @outsideBackgroundColour;
-    border-radius: 15px;
-    padding: 0.5rem 0;
-    min-height: 200px;
-}
-
-.footer {
-    background-color: @outsideBackgroundColour;
-    min-height: 40px;
-    padding: 5px;
-    margin-top: @outsideMargin;
+.projectPanel {
+    padding: @panelPadding;
 }

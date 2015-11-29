@@ -68,6 +68,22 @@ THE SOFTWARE.
   margin-bottom: 0.5rem;
   border: 2px solid #DDEEFF;
   border-radius: 5px;
+  /*        @progressBarHeight: 14px;
+        @progressBarPadding: 3px;
+        @outerRadius: @progressBarPadding + @progressBarHeight/2;
+        .progressBar {
+            background-color: black;
+            border-bottom-right-radius: @outerRadius;
+            border-top-right-radius: @outerRadius;
+            padding: @progressBarPadding;
+        }
+        .progressBar > div {
+            background-color: orange;
+            width: 40%;
+            height: @progressBarHeight;
+            border-bottom-right-radius: 10px;
+            border-top-right-radius: 10px;
+        }*/
 }
 .projectPanel .project .projectName {
   width: auto;
@@ -83,5 +99,18 @@ THE SOFTWARE.
   background: -o-linear-gradient(#1187ff, #003B77);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1187ff', endColorstr='#003B77', GradientType=0);
   color: #FFFFFF;
+}
+.projectPanel .project .progress {
+  background-color: black;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 3px;
+}
+.projectPanel .project .progress-bar {
+  height: 14px;
+}
+.projectPanel .project .progress-bar:last-child {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 }
 /*# sourceMappingURL=game.css.map */

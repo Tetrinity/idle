@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<div class="progress">
+    <div data-ng-if="getPolishProgress() !== 0" class="progress-bar progress-bar-warning" style="width: {{getPolishProgress()}}%">
+        <span class="sr-only"></span>
+    </div>
+    <div data-ng-if="getBaseProgress() !== 0" class="progress-bar progress-bar-success" style="width: {{getBaseProgress()}}%">
+        <span class="sr-only"></span>
+    </div>
+</div>
+{{progress}}%

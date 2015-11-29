@@ -57,5 +57,40 @@ THE SOFTWARE.
             .gradient(@projectNameColour, @projectNameColour, lighten(@projectNameColour, 30%));
             color: #FFFFFF;
         }
+        
+        @progressBarHeight: 14px;
+        @progressBarPadding: 3px;
+        @outerRadius: @progressBarPadding + @progressBarHeight/2;
+        
+        .progress {
+            background-color: black;
+            border-bottom-right-radius: @outerRadius;
+            border-top-right-radius: @outerRadius;
+            padding: @progressBarPadding;
+        }
+        .progress-bar {
+            height: @progressBarHeight;
+        }
+        .progress-bar:last-child {
+            border-bottom-right-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+/*        @progressBarHeight: 14px;
+        @progressBarPadding: 3px;
+        @outerRadius: @progressBarPadding + @progressBarHeight/2;
+        .progressBar {
+            background-color: black;
+            border-bottom-right-radius: @outerRadius;
+            border-top-right-radius: @outerRadius;
+            padding: @progressBarPadding;
+        }
+        .progressBar > div {
+            background-color: orange;
+            width: 40%;
+            height: @progressBarHeight;
+            border-bottom-right-radius: 10px;
+            border-top-right-radius: 10px;
+        }*/
     }
 }

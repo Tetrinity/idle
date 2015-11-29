@@ -105,7 +105,7 @@ describe("SaveDataService", function(){
             }
         })
         
-        it("should reset all upgrades", function(){
+        xit("should reset all upgrades", function(){
             
         })
     })

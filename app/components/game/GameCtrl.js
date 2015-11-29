@@ -24,13 +24,17 @@
 
 angular.module('idle.controller')
 
-.controller('GameCtrl', ['$scope', 'SaveDataService', 'ProjectService',
-    function($scope, saveDataService, projectService){
+.controller('GameCtrl', ['$scope', 'SaveDataService', 'ProjectService', 'NumberService',
+    function($scope, saveDataService, projectService, numberService){
         $scope.data = saveDataService
         $scope.projects = projectService.projects
         
         $scope.saveGame = function(){
             saveDataService.saveGame()
+        }
+        
+        $scope.displayNumber = function(num){
+            return numberService.getDisplayName(num)
         }
     }
 ])

@@ -24,16 +24,17 @@
 
 describe("GameCtrl", function(){
     var controller
-    var $scope, saveDataService
+    var $scope, saveDataService, numberService
     
     beforeEach(module('idle.controller'))
     beforeEach(module('idle.service'))
     
-    beforeEach(inject(function(_$controller_, _SaveDataService_){
+    beforeEach(inject(function(_$controller_, _SaveDataService_, _NumberService_){
         $scope = {}
         saveDataService = _SaveDataService_
+        numberService = _NumberService_
         
-        controller = _$controller_('GameCtrl', { $scope: $scope, SaveDataService: saveDataService })
+        controller = _$controller_('GameCtrl', { $scope: $scope, SaveDataService: saveDataService, numberService: numberService })
     }))
     
     describe("saveGame", function(){
@@ -45,6 +46,19 @@ describe("GameCtrl", function(){
             $scope.saveGame()
             
             expect(saveDataService.saveGame).toHaveBeenCalled()
+        })
+    })
+    
+    describe("displayNumber", function(){
+        beforeEach(function(){
+            spyOn(numberService, "getDisplayName").and.returnValue("ONE MILLION DOLLARS")
+        })
+        
+        it("should call the getDisplayName function of the numberService", function(){
+            var num = bigInt(1000000)
+            
+            expect($scope.displayNumber(num)).toEqual("ONE MILLION DOLLARS")
+            expect(numberService.getDisplayName).toHaveBeenCalledWith(num)
         })
     })
 })

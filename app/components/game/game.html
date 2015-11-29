@@ -1,4 +1,10 @@
-Game page
+<div class="gameScreen">
+    <div class="statPanel">
+        <span>Money: {{displayNumber(data.money)}}</span>
+        <span>Lines of Code: {{displayNumber(data.linesOfCode)}}</span>
+    </div>
+</div>
+
 <button data-ng-click="saveGame()">Save Game</button><br>
 
 <project data-ng-repeat="project in projects" project-name="{{project.name}}"></project>

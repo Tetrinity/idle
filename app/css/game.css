@@ -100,6 +100,10 @@ THE SOFTWARE.
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1187ff', endColorstr='#003B77', GradientType=0);
   color: #FFFFFF;
 }
+.projectPanel .project .progressPercent {
+  float: right;
+  margin: 0.1rem 0.25rem 0 0.25rem;
+}
 .projectPanel .project .progress {
   background-color: black;
   border-bottom-right-radius: 10px;

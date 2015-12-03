@@ -34,5 +34,24 @@ describe("ProjectCtrl", function(){
         controller = _$controller_('ProjectCtrl', { $scope: $scope })
     }))
     
+    describe("getProgressPercent", function(){
+        it("should compute the percentage of lines written for the project", function(){
+            $scope.linesWritten = bigInt(0)
+            $scope.linesNeeded = bigInt(200)
+            expect($scope.getProgressPercent()).toEqual(0)
+            
+            $scope.linesWritten = bigInt(100)
+            $scope.linesNeeded = bigInt(200)
+            expect($scope.getProgressPercent()).toEqual(50)
+            
+            $scope.linesWritten = bigInt(173)
+            $scope.linesNeeded = bigInt(200)
+            expect($scope.getProgressPercent()).toEqual(86.5)
+
+            $scope.linesWritten = bigInt(250)
+            $scope.linesNeeded = bigInt(200)
+            expect($scope.getProgressPercent()).toEqual(125)
+        })
+    })
     
 })

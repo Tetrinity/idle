@@ -24,8 +24,11 @@
 
 angular.module('idle.controller')
 .controller('ProjectCtrl', ['$scope',
-    function(){
+    function($scope){
         
+        $scope.getProgressPercent = function(){
+            return 100 * $scope.linesWritten/$scope.linesNeeded
+        }
     }
 ])
 .directive('project', function(){
@@ -33,7 +36,10 @@ angular.module('idle.controller')
         restrict: 'E',
         templateUrl: '/components/game/project-partial.html',
         scope: {
-            projectName: '@'
-        }
+            projectName: '@',
+            linesWritten: '=',
+            linesNeeded: '='
+        },
+        controller: 'ProjectCtrl'
     }
 })

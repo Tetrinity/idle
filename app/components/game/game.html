@@ -4,7 +4,12 @@
         <span>Lines of Code: {{displayNumber(data.linesOfCode)}}</span>
     </div>
     <div class="projectPanel">
-        <project data-ng-repeat="project in projects" project-name="{{project.name}}"></project>
+        <project
+            data-ng-repeat="project in projects"
+            project-name="{{project.name}}"
+            lines-written="project.currentProgress"
+            lines-needed="project.baseLoc"
+        </project>
     </div>
 </div>
 

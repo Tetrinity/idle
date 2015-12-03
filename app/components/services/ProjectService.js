@@ -35,6 +35,7 @@ angular.module('idle.service')
          *  baseLoc: the number of lines of code required to write this program (without upgrades)
          *  baseProfit: the amount of money made by selling the rights to this program at 100% completion
          *  unlocked: whether this project is available for development
+         *  currentProgress: the number of lines currently written for this program
          */
         
         service.registerProject = function(name, baseLoc, baseProfit){
@@ -42,7 +43,8 @@ angular.module('idle.service')
                 name: name,
                 baseLoc: baseLoc,
                 baseProfit: baseProfit,
-                unlocked: false
+                unlocked: false,
+                currentProgress: bigInt(0)
             })
         }
         

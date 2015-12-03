@@ -48,6 +48,10 @@ describe("ProjectCtrl", function(){
             $scope.linesNeeded = bigInt(200)
             expect($scope.getProgressPercent()).toEqual(86.5)
 
+            $scope.linesWritten = bigInt(1)
+            $scope.linesNeeded = bigInt(7)
+            expect($scope.getProgressPercent()).toEqual(14.29)
+
             $scope.linesWritten = bigInt(250)
             $scope.linesNeeded = bigInt(200)
             expect($scope.getProgressPercent()).toEqual(125)

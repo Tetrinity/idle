@@ -26,7 +26,7 @@ angular.module('idle.controller')
 .controller('ProjectCtrl', ['$scope',
     function($scope){
         $scope.getProgressPercent = function(){
-            return 100 * $scope.linesWritten/$scope.linesNeeded
+            return Math.round(10000 * $scope.linesWritten/$scope.linesNeeded) / 100
         }
     }
 ])

@@ -28,6 +28,10 @@ angular.module('idle.controller')
         $scope.getProgressPercent = function(){
             return Math.round(10000 * $scope.linesWritten/$scope.linesNeeded) / 100
         }
+        
+        $scope.unlockProject = function(){
+            $scope.unlocked = true
+        }
     }
 ])
 .directive('project', function(){
@@ -37,7 +41,8 @@ angular.module('idle.controller')
         scope: {
             projectName: '@',
             linesWritten: '=',
-            linesNeeded: '='
+            linesNeeded: '=',
+            unlocked: '='
         },
         controller: 'ProjectCtrl'
     }

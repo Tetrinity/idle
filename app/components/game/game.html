@@ -4,11 +4,14 @@
         <span>Lines of Code: {{displayNumber(data.linesOfCode)}}</span>
     </div>
     <div class="projectPanel">
+        <!-- TODO: modify lines-needed with upgrades -->
         <project
             data-ng-repeat="project in projects"
+            data-ng-if="isProjectVisible($index)"
             project-name="{{project.name}}"
             lines-written="project.currentProgress"
-            lines-needed="project.baseLoc" <!-- TODO: modify lines-needed with upgrades -->
+            lines-needed="project.baseLoc"
+            unlocked="project.unlocked"
         </project>
     </div>
 </div>

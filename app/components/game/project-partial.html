@@ -24,7 +24,11 @@ THE SOFTWARE.
 -->
 <div class="project">
     <div class="progressPercent">
-        {{getProgressPercent()}}%
+        <span data-ng-if="unlocked">{{getProgressPercent()}}%</span>
+        <span data-ng-if="!unlocked">
+            <button data-ng-click="unlockProject()">unlock</button>
+            LOCKED
+        </span>
     </div>
     <div class="projectName">
         {{ projectName }}

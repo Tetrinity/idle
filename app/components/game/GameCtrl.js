@@ -36,5 +36,12 @@ angular.module('idle.controller')
         $scope.displayNumber = function(num){
             return numberService.getDisplayName(num)
         }
+        
+        $scope.isProjectVisible = function(projectIndex){
+            var thisProjectUnlocked = $scope.projects[projectIndex].unlocked
+            var previousProjectUnlocked = $scope.projects[projectIndex-1] && $scope.projects[projectIndex-1].unlocked
+            
+            return thisProjectUnlocked || previousProjectUnlocked
+        }
     }
 ])

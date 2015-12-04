@@ -58,4 +58,12 @@ describe("ProjectCtrl", function(){
         })
     })
     
+    describe("unlockProject", function(){
+        it("should set the project's unlocked property to true", function(){
+            $scope.unlocked = false
+            
+            $scope.unlockProject()
+            expect($scope.unlocked).toEqual(true)
+        })
+    })
 })

@@ -61,4 +61,27 @@ describe("GameCtrl", function(){
             expect(numberService.getDisplayName).toHaveBeenCalledWith(num)
         })
     })
+    
+    describe("isProjectVisible", function(){
+        beforeEach(function(){
+            $scope.projects = [
+                { unlocked: true },
+                { unlocked: true },
+                { unlocked: false },
+                { unlocked: false }
+            ]
+        })
+        
+        it("should return true if the project has been unlocked", function(){
+            expect($scope.isProjectVisible(1)).toEqual(true)
+        })
+        
+        it("should return true if it immediately follows an unlocked project", function(){
+            expect($scope.isProjectVisible(2)).toEqual(true)
+        })
+        
+        it("should return false otherwise", function(){
+            expect($scope.isProjectVisible(3)).toEqual(false)
+        })
+    })
 })

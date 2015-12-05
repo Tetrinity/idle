@@ -1,19 +1,23 @@
 <div class="gameScreen">
     <div class="statPanel">
+        <button data-ng-click="saveGame()" style="float: right">Save Game</button>
         <span>Money: £{{displayNumber(data.money)}}</span>
         <span>Lines of Code: {{displayNumber(data.linesOfCode)}}</span>
     </div>
-    <div class="projectPanel">
-        <!-- TODO: modify lines-needed with upgrades -->
-        <project
-            data-ng-repeat="project in projects"
-            data-ng-if="isProjectVisible($index)"
-            project-name="{{project.name}}"
-            lines-written="project.currentProgress"
-            lines-needed="project.baseLoc"
-            unlocked="project.unlocked"
-        </project>
+    <div id="mainPane">
+        <div class="projectPanel">
+            <!-- TODO: modify lines-needed with upgrades -->
+            <project
+                data-ng-repeat="project in projects"
+                data-ng-if="isProjectVisible($index)"
+                project-name="{{project.name}}"
+                lines-written="project.currentProgress"
+                lines-needed="project.baseLoc"
+                unlocked="project.unlocked"
+            </project>
+        </div>
+        <div class="devPanel">
+            dev panel
+        </div>
     </div>
 </div>
-
-<button data-ng-click="saveGame()">Save Game</button><br>

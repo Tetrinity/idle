@@ -28,7 +28,6 @@ THE SOFTWARE.
 .statPanel {
     border-bottom: 2px solid @outsideBackgroundColour;
     padding: 0 @panelPadding @panelPadding @panelPadding;
-    margin-bottom: 5px;
     
     span {
         display: block;
@@ -39,9 +38,11 @@ THE SOFTWARE.
 
 .projectPanel {
     padding: @panelPadding;
+    padding-top: @panelPadding + 0.2rem;
+    display: inline-block;
+    width: 40%;
     
     .project {
-        width: 40%;
         margin-bottom: 0.5rem;
         border: 2px solid @outsideBackgroundColour;
         border-radius: 5px;
@@ -81,22 +82,10 @@ THE SOFTWARE.
             border-bottom-right-radius: 10px;
             border-top-right-radius: 10px;
         }
-        
-/*        @progressBarHeight: 14px;
-        @progressBarPadding: 3px;
-        @outerRadius: @progressBarPadding + @progressBarHeight/2;
-        .progressBar {
-            background-color: black;
-            border-bottom-right-radius: @outerRadius;
-            border-top-right-radius: @outerRadius;
-            padding: @progressBarPadding;
-        }
-        .progressBar > div {
-            background-color: orange;
-            width: 40%;
-            height: @progressBarHeight;
-            border-bottom-right-radius: 10px;
-            border-top-right-radius: 10px;
-        }*/
     }
+}
+
+.devPanel {
+    padding: @panelPadding;
+    display: inline-block;
 }

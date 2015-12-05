@@ -27,6 +27,12 @@ THE SOFTWARE.
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
+.unselectable {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
+}
 /*
 The MIT License
 
@@ -99,6 +105,10 @@ THE SOFTWARE.
   background: -o-linear-gradient(#1187ff, #003B77);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1187ff', endColorstr='#003B77', GradientType=0);
   color: #FFFFFF;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
 }
 .projectPanel .project .progressPercent {
   float: right;

@@ -69,7 +69,12 @@ THE SOFTWARE.
   padding: 0.5rem;
   padding-top: 0.7rem;
   display: inline-block;
+  max-height: 350px;
   width: 40%;
+  min-width: 250px;
+  max-width: 500px;
+  float: left;
+  overflow-y: auto;
 }
 .projectPanel .project {
   margin-bottom: 0.5rem;
@@ -115,5 +120,14 @@ THE SOFTWARE.
 .devPanel {
   padding: 0.5rem;
   display: inline-block;
+  height: 350px;
+  width: 50%;
+  margin: auto;
+}
+.devPanel .navbar {
+  background-color: #F8F8F8;
+  padding: 4px;
+  width: 100%;
+  margin-bottom: 0.25rem;
 }
 /*# sourceMappingURL=game.css.map */

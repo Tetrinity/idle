@@ -40,7 +40,12 @@ THE SOFTWARE.
     padding: @panelPadding;
     padding-top: @panelPadding + 0.2rem;
     display: inline-block;
+    max-height: @bodyHeight;
     width: 40%;
+    min-width: 250px;
+    max-width: 500px;
+    float: left;
+    overflow-y: auto;
     
     .project {
         margin-bottom: 0.5rem;
@@ -88,4 +93,14 @@ THE SOFTWARE.
 .devPanel {
     padding: @panelPadding;
     display: inline-block;
+    height: @bodyHeight;
+    width: 50%;
+    margin: auto;
+    
+    .navbar {
+        background-color: #F8F8F8;
+        padding: 4px;
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
 }

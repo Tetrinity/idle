@@ -125,6 +125,7 @@
     max-width: none;
 }
 .nav-tabs {
+    margin-top: 3px;
     border-bottom: 1px solid #dddddd;
 }
 .nav-tabs > li {
@@ -260,6 +261,9 @@
     .nav-tabs-justified > .active > a:focus {
         border-bottom-color: #ffffff;
     }
+}
+.tab-content {
+    padding: 0.25rem;
 }
 .tab-content > .tab-pane {
     display: none;
